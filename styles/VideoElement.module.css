@@ -1,0 +1,58 @@
+.Container {
+  display: grid;
+  max-width: 300px;
+  min-width: 200px;
+  height: min-content;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background: transparent;
+  flex: 0 auto;
+  margin: 10px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.Data {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  display: grid;
+  grid-template-columns: min-content auto;
+  gap: 10px;
+  padding: 10px 10px 0px 0px;
+}
+
+.DataGrid {
+  display: grid;
+  color: #aaaaaa;
+}
+
+/* Nesting */
+.Image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ProfileImage {
+  border-radius: 100%;
+  width: 50px;
+  height: auto;
+}
+
+.Title {
+  font-weight: bold;
+  color: white;
+}
+
+.Owner,
+.Views,
+.Date {
+  color: #aaaaaa;
+}

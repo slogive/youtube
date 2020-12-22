@@ -1,65 +1,72 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import styles from '../styles/Index.module.css';
+import Header from './Header';
+import HomeMain from './HomeMain';
+import Navbar from './Navbar';
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>YouTube Slogive</title>
+        <link rel='canonical' href='https://www.youtube.slogive.xyz' />
+        <meta
+          name='description'
+          content='Disfruta los videos y la música que te encantan, sube contenido original y compártelo con tus amigos, familiares y el resto del mundo en YouTube.'
+        ></meta>
+
+        {/* Favicon */}
+        <link
+          rel='shortcut icon'
+          href='https://www.youtube.com/s/desktop/f852ec96/img/favicon.ico'
+          type='image/x-icon'
+        />
+        <link
+          rel='icon'
+          href='https://www.youtube.com/s/desktop/f852ec96/img/favicon_32.png'
+          sizes='32x32'
+        />
+        <link
+          rel='icon'
+          href='https://www.youtube.com/s/desktop/f852ec96/img/favicon_48.png'
+          sizes='48x48'
+        />
+        <link
+          rel='icon'
+          href='https://www.youtube.com/s/desktop/f852ec96/img/favicon_96.png'
+          sizes='96x96'
+        />
+        <link
+          rel='icon'
+          href='https://www.youtube.com/s/desktop/f852ec96/img/favicon_144.png'
+          sizes='144x144'
+        />
+
+        {/* Social Media */}
+        <meta
+          property='og:image'
+          content='https://www.youtube.com/img/desktop/yt_1200.png'
+        />
+        <meta property='og:title' content='Youtube' />
+        <meta property='og:url' content='https://www.youtube.slogive.xyz' />
+
+        {/* Fonts */}
+        <link rel='preconnect' href='https://fonts.gstatic.com' />
+        <link
+          href='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'
+          rel='stylesheet'
+        />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <Header></Header>
+      <div className={styles.Main}>
+        <Navbar></Navbar>
+        <HomeMain></HomeMain>
+      </div>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+      <main className={styles.main}>{/* Apps */}</main>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      <footer className={styles.footer}></footer>
     </div>
-  )
+  );
 }

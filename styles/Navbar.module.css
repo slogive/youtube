@@ -1,0 +1,23 @@
+.Navbar {
+  --size: 25px;
+  --titleSize: 100px;
+  --blueColor: #3ea6ff;
+  --grayColor: #6f6f6f;
+}
+
+.Navbar {
+  min-height: calc(100vh - 50px);
+  background-color: #202020;
+}
+
+@media only screen and (max-width: 600px) {
+  .Menu {
+    width: 100vw;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .Menu {
+    width: 250px;
+  }
+}
