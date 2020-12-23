@@ -3,6 +3,7 @@ import styles from '../styles/Index.module.css';
 import Header from './Header';
 import HomeMain from './HomeMain';
 import Navbar from './Navbar';
+import PlaySection from './PlaySection';
 
 export default function Home() {
   return (
@@ -59,10 +60,12 @@ export default function Home() {
       </Head>
 
       <Header></Header>
-      <div className={styles.Main}>
+      {/* <div className={styles.Main}>
         <Navbar></Navbar>
         <HomeMain></HomeMain>
-      </div>
+      </div> */}
+
+      <PlaySection></PlaySection>
 
       <main className={styles.main}>{/* Apps */}</main>
 

@@ -27,8 +27,7 @@
     justify-self: left;
   }
 
-  .SearchSimple,
-  .User {
+  .SearchSimple {
     justify-self: right;
   }
 
@@ -36,8 +35,7 @@
   .Create,
   .Apps,
   .Notifications,
-  .Search,
-  .User span {
+  .Search {
     display: none !important;
     visibility: hidden !important;
   }
@@ -55,21 +53,6 @@
   .SearchSimple {
     display: none;
     visibility: hidden;
-  }
-
-  .User {
-    grid-area: User;
-    align-items: center;
-    display: grid;
-    grid-template-columns: var(--size) min-content;
-    width: auto !important;
-    border: solid 2px var(--blueColor);
-    padding: 7px 10px;
-    border-radius: 3px;
-    height: 40px;
-    gap: 3px;
-    text-transform: uppercase;
-    fill: var(--blueColor);
   }
 }
 
@@ -113,20 +96,6 @@
   grid-area: Notifications;
 }
 
-.User {
-  grid-area: User;
-  align-items: center;
-  display: grid;
-  grid-template-columns: var(--size) min-content;
-  width: auto !important;
-  padding: 7px 10px;
-  border-radius: 3px;
-  height: 40px;
-  text-transform: uppercase;
-  color: var(--blueColor);
-  fill: var(--blueColor);
-}
-
 /* Sizes */
 .Button,
 .Create,
@@ -141,8 +110,7 @@
 .Title,
 .Create,
 .Apps,
-.Notifications,
-.User {
+.Notifications {
   cursor: pointer;
 }
 

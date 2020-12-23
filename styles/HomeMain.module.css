@@ -1,4 +1,4 @@
-.Container {
+/* .Container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -8,4 +8,30 @@
   overflow: hidden;
   height: min-content;
   padding: 10px;
+} */
+
+.Container {
+  display: grid;
+
+  gap: 1rem 1rem;
+  padding: 10px 0;
+  /* margin: 0 1rem; */
+  border-top: 4px solid #ccc;
+  justify-content: center;
+}
+
+.Container:not(:first-child) {
+  border-top: none !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .Container {
+    grid-template-columns: 1;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .Container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
 }

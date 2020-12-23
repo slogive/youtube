@@ -21,3 +21,45 @@
     width: 250px;
   }
 }
+
+.Container div {
+  color: white;
+  padding: 15px 0px;
+  border-bottom: 1px solid var(--grayColor);
+}
+
+.Container div div {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: min-content auto;
+  gap: 15px;
+  align-items: center;
+  font-weight: bold;
+  border: none;
+}
+
+.Container div div:hover {
+  background: var(--grayColor);
+  cursor: pointer;
+}
+
+.Container div div svg {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  fill: var(--grayColor);
+  pointer-events: none;
+  display: block;
+}
+
+/* Nesting */
+
+.ClassUser p,
+.ClassUser section {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.ClassUser {
+  display: grid;
+}

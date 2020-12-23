@@ -1,0 +1,37 @@
+.User {
+  --blueColor: #3ea6ff;
+  --grayColor: #6f6f6f;
+  --size: 25px;
+}
+
+@media only screen and (max-width: 600px) {
+  .User {
+    justify-self: right;
+  }
+  .User span {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .User {
+    border: solid 2px var(--blueColor) !important;
+    gap: 3px !important;
+    fill: var(--blueColor) !important;
+  }
+}
+
+.User {
+  align-items: center;
+  display: grid;
+  grid-template-columns: var(--size) min-content;
+  width: min-content;
+  height: 40px;
+  padding: 7px 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  color: var(--blueColor);
+  fill: var(--blueColor);
+  cursor: pointer;
+}

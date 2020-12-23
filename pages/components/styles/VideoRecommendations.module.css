@@ -1,0 +1,37 @@
+.Container {
+  --blueColor: #3ea6ff;
+  --grayColor: #6f6f6f;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.Container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.DataGrid {
+  display: grid;
+  height: min-content;
+}
+
+/* Nesting */
+.Title {
+  font-weight: bold;
+  color: var(--grayColor);
+}
+
+.Title {
+  color: white;
+}
+
+.Owner,
+.Views,
+.Date {
+  color: #aaa;
+}
