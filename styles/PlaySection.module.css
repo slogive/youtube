@@ -117,6 +117,13 @@
   gap: var(--MB);
 }
 
+.VideoPops,
+.VideoShare,
+.VideoSave,
+.VideoOptions {
+  cursor: pointer;
+}
+
 /* User */
 .ProfilePic {
   display: grid;

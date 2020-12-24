@@ -1,3 +1,4 @@
+import react, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Index.module.css';
 import Header from './Header';
@@ -5,9 +6,20 @@ import HomeMain from './HomeMain';
 import Navbar from './Navbar';
 import PlaySection from './PlaySection';
 import Link from 'next/link';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export default function Home() {
+function Home() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    fetch('https://api.youtube.slogive.xyz/videos', {
+      mode: 'cors',
+    })
+      .then((response) => response.json())
+      .then((items) => setData(items))
+      .then(() => setLoading(true));
+  });
   return (
     <>
       <Head>
@@ -63,28 +75,27 @@ export default function Home() {
 
       <Header></Header>
 
-      <Link href='/' title='Home'>
-        <h1>Title</h1>
-      </Link>
-      <Link href='/video' title='Video'>
-        <h1>Video</h1>
-      </Link>
-
-      <Router>
-        <Switch></Switch>
-      </Router>
+      {loading ? (
+        <>
+          <ul>
+            {data?.map((item, i) => (
+              <li key={i}>
+                <Link href={`/video/${item.id}`}>
+                  <a>{item.id}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : (
+        ''
+      )}
     </>
   );
 }
 
-function NotFound() {
-  return <h1>404</h1>;
-}
+const mapStateToProps = (state) => ({
+  data: state.data,
+});
 
-function Inicio() {
-  return <h1>We are in Inicio</h1>;
-}
-
-function Video() {
-  return <h1>We are in video</h1>;
-}
+export default connect(mapStateToProps, null)(Home);

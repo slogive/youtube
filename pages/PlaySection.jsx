@@ -2,12 +2,15 @@ import React, { useState, useReducer } from 'react';
 import styles from '../styles/PlaySection.module.css';
 import VideoElement from './components/VideoElement';
 import VideoRecommendation from './components/VideoRecommendation';
+import moment from 'moment';
 
-function PlaySection() {
+function PlaySection(props) {
   const serverStorage = 'https://youtube.slogive.xyz/src/';
   const imagePreview = 'preview-image.png';
 
   const [showMore, setShowMore] = useReducer((showMore) => !showMore);
+
+  const { title, views, date, owner, ownersubs, description, ownerpic } = props;
   return (
     <div className={styles.Main}>
       <div className={styles.Container}>
@@ -17,13 +20,13 @@ function PlaySection() {
             <div className={styles.VideoInfo}>
               <span className={styles.Hashtags}>#10 EN TENDENCIAS</span>
               <section>
-                <span className={styles.VideoTitle}>
-                  Agujeros de Guión: PIRATAS DEL CARIBE 3: En el fin del mundo
-                  (2/2) (Errores, review, resumen)
-                </span>
+                <span className={styles.VideoTitle}>{title}</span>
                 <section className={styles.VideoMetaContainer}>
                   <div className={styles.VideoMeta}>
-                    <span>Video Views &nbsp; &bull; &nbsp; Video Date</span>
+                    <span>
+                      {views.toLocaleString()} vistas &nbsp; &bull; &nbsp;{' '}
+                      {moment(date).format('D MMM[.] YYYY')}
+                    </span>
                   </div>
                   <div className={styles.VideoPops}>
                     <div>
@@ -75,7 +78,7 @@ function PlaySection() {
                     </svg>
                     <span>Guardar</span>
                   </div>
-                  <div>
+                  <div className={styles.VideoOptions}>
                     <svg
                       viewBox='0 0 24 24'
                       preserveAspectRatio='xMidYMid meet'
@@ -97,8 +100,8 @@ function PlaySection() {
             <div className={styles.DataGrid}>
               <div className={styles.ProfilePic}>
                 <img
-                  src={`${serverStorage}channel-profile.jpg`}
-                  alt='Profile Pic'
+                  src={`${serverStorage}${ownerpic}`}
+                  alt={`${owner} Profile Picture}`}
                 />
               </div>
               <div>
@@ -108,58 +111,14 @@ function PlaySection() {
                 >
                   <div className={styles.videoTitles}>
                     <div style={{ display: 'grid' }}>
-                      <span className={styles.ProfileTitle}>Channel Title</span>
+                      <span className={styles.ProfileTitle}>{owner}</span>
                       <span className={styles.ProfileSubsCount}>
-                        Channel Subs
+                        {ownersubs}
                       </span>
                     </div>
                     <span className={styles.ProfileSub}>Suscribirse</span>
                   </div>
-                  <p className={styles.videoDesc}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Aliquid, perferendis aut iure error hic consequatur nisi
-                    odio quaerat, quasi itaque architecto eum beatae
-                    consequuntur recusandae possimus accusantium ad nulla fugit.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Assumenda incidunt facere voluptate aperiam repellendus
-                    laudantium totam distinctio quia fuga ad et, veniam dolor
-                    ducimus blanditiis quae a tempora animi ex? Lorem ipsum,
-                    dolor sit amet consectetur adipisicing elit. Accusantium
-                    dolores eum id ex accusamus sed enim consequuntur maxime,
-                    molestiae ab obcaecati tempore alias asperiores temporibus
-                    magnam quae impedit. Ullam, optio? Lorem ipsum dolor sit
-                    amet consectetur adipisicing elit. Eaque, eveniet! Corporis
-                    error illo blanditiis magni molestiae esse praesentium nemo,
-                    quam quos, quia fuga voluptas est perspiciatis. Vitae omnis
-                    sed amet? Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. In adipisci cumque voluptatibus, aut repudiandae ipsum
-                    facere quod ipsa nam veniam est exercitationem id
-                    perferendis unde deserunt pariatur, aperiam incidunt quia.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Debitis fugiat doloremque harum facilis alias perspiciatis
-                    possimus, a culpa delectus ipsa iste exercitationem at
-                    numquam animi qui officiis repellat autem in. Lorem ipsum
-                    dolor, sit amet consectetur adipisicing elit. Est hic sit
-                    quo harum facilis ipsum optio laborum officiis ea dolores
-                    qui iusto, dolore aliquam. Dolor odio neque quibusdam
-                    possimus blanditiis? Vero veritatis suscipit labore nobis
-                    voluptatibus recusandae non sapiente temporibus ut obcaecati
-                    possimus soluta accusamus deleniti quisquam, quibusdam,
-                    earum nulla asperiores ipsum. Veniam numquam eum, inventore
-                    voluptas possimus harum eos. Optio quos distinctio saepe
-                    fuga deserunt nihil? Asperiores id quos pariatur ipsa
-                    temporibus impedit laborum, nihil atque earum! Accusamus
-                    modi voluptas dolorum iste est fuga molestiae, earum id.
-                    Iusto, sapiente. Eum, nemo repellat nostrum voluptatibus
-                    omnis pariatur modi sapiente eveniet nam vitae? Ducimus,
-                    eius sint. Veritatis eum, accusantium illo pariatur
-                    voluptate ad porro molestias, voluptatum itaque modi
-                    asperiores, harum cumque! Corporis ipsum sequi odio omnis
-                    iusto, quas ducimus assumenda quae, eum molestiae similique
-                    voluptatibus officia ea id facilis corrupti laudantium
-                    illum, possimus eaque culpa! Nostrum in officia tenetur
-                    magnam dolorem.
-                  </p>
+                  <p className={styles.videoDesc}>{description}</p>
                 </div>
                 <div className={styles.ShowMore}>
                   <button onClick={setShowMore}>
