@@ -1,26 +1,33 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from '../styles/Navbar.module.css';
 
 import User from './components/User';
 
 function Navbar() {
   return (
-    <nav className={styles.Navbar}>
+    <nav className={styles.Navbar + ' ' + styles.Active}>
+      <div className={styles.MobileButton}>
+        <span>&#9587;</span>
+        <span role='title'>Cuenta</span>
+      </div>
       <div className={styles.Menu}>
         <section className={styles.Container}>
           <div className={styles.ClassMain}>
-            <div>
-              <svg
-                viewBox='0 0 24 24'
-                preserveAspectRatio='xMidYMid meet'
-                focusable='false'
-              >
-                <g>
-                  <path d='M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8'></path>
-                </g>
-              </svg>
-              <span>Principal</span>
-            </div>
+            <Link href='/' passHref>
+              <div>
+                <svg
+                  viewBox='0 0 24 24'
+                  preserveAspectRatio='xMidYMid meet'
+                  focusable='false'
+                >
+                  <g>
+                    <path d='M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8'></path>
+                  </g>
+                </svg>
+                <span>Principal</span>
+              </div>
+            </Link>
             <div>
               <svg
                 viewBox='0 0 24 24'
@@ -80,47 +87,48 @@ function Navbar() {
             </p>
             <User></User>
           </div>
-          <div className={styles.ClassSettings}>
-            <div>
-              <svg
-                viewBox='0 0 24 24'
-                preserveAspectRatio='xMidYMid meet'
-                focusable='false'
-              >
-                <g>
-                  <path d='M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.1-1.65c.2-.15.25-.42.13-.64l-2-3.46c-.12-.22-.4-.3-.6-.22l-2.5 1c-.52-.4-1.08-.73-1.7-.98l-.37-2.65c-.06-.24-.27-.42-.5-.42h-4c-.27 0-.48.18-.5.42l-.4 2.65c-.6.25-1.17.6-1.7.98l-2.48-1c-.23-.1-.5 0-.6.22l-2 3.46c-.14.22-.08.5.1.64l2.12 1.65c-.04.32-.07.65-.07.98s.02.66.06.98l-2.1 1.65c-.2.15-.25.42-.13.64l2 3.46c.12.22.4.3.6.22l2.5-1c.52.4 1.08.73 1.7.98l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.6-.25 1.17-.6 1.7-.98l2.48 1c.23.1.5 0 .6-.22l2-3.46c.13-.22.08-.5-.1-.64l-2.12-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z'></path>
-                </g>
-              </svg>
-              <span>Configuración</span>
+          <Link href='/configuracion' passHref>
+            <div className={styles.ClassSettings}>
+              <div>
+                <svg
+                  viewBox='0 0 24 24'
+                  preserveAspectRatio='xMidYMid meet'
+                  focusable='false'
+                >
+                  <g>
+                    <path d='M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.1-1.65c.2-.15.25-.42.13-.64l-2-3.46c-.12-.22-.4-.3-.6-.22l-2.5 1c-.52-.4-1.08-.73-1.7-.98l-.37-2.65c-.06-.24-.27-.42-.5-.42h-4c-.27 0-.48.18-.5.42l-.4 2.65c-.6.25-1.17.6-1.7.98l-2.48-1c-.23-.1-.5 0-.6.22l-2 3.46c-.14.22-.08.5.1.64l2.12 1.65c-.04.32-.07.65-.07.98s.02.66.06.98l-2.1 1.65c-.2.15-.25.42-.13.64l2 3.46c.12.22.4.3.6.22l2.5-1c.52.4 1.08.73 1.7.98l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.6-.25 1.17-.6 1.7-.98l2.48 1c.23.1.5 0 .6-.22l2-3.46c.13-.22.08-.5-.1-.64l-2.12-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z'></path>
+                  </g>
+                </svg>
+                <span>Configuración</span>
+              </div>
+              <div>
+                <svg
+                  viewBox='0 0 24 24'
+                  preserveAspectRatio='xMidYMid meet'
+                  focusable='false'
+                >
+                  <g>
+                    <path d='M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z'></path>
+                  </g>
+                </svg>
+                <span>Historial de denuncias</span>
+              </div>
+              <div>
+                <svg
+                  viewBox='0 0 24 24'
+                  preserveAspectRatio='xMidYMid meet'
+                  focusable='false'
+                >
+                  <g>
+                    <path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z'></path>
+                  </g>
+                </svg>
+                <span>Ayuda</span>
+              </div>
             </div>
-            <div>
-              <svg
-                viewBox='0 0 24 24'
-                preserveAspectRatio='xMidYMid meet'
-                focusable='false'
-              >
-                <g>
-                  <path d='M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z'></path>
-                </g>
-              </svg>
-              <span>Historial de denuncias</span>
-            </div>
-            <div>
-              <svg
-                viewBox='0 0 24 24'
-                preserveAspectRatio='xMidYMid meet'
-                focusable='false'
-              >
-                <g>
-                  <path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z'></path>
-                </g>
-              </svg>
-              <span>Ayuda</span>
-            </div>
-          </div>
+          </Link>
         </section>
       </div>
-      <div className={styles.Optional}></div>
     </nav>
   );
 }

@@ -8,9 +8,47 @@
 .Navbar {
   min-height: calc(100vh - 50px);
   background-color: #202020;
+  transition: all ease-in-out 0.5s;
 }
 
 @media only screen and (max-width: 600px) {
+  .MobileButton {
+    display: grid;
+    grid-template-columns: min-content auto;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 30px;
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  .MobileButton span {
+    color: white;
+  }
+
+  .MobileButton span[role='title'] {
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+
+  .Navbar.Active {
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    top: 49px;
+    bottom: 0px;
+    overflow: scroll;
+  }
+
+  .Navbar.Disable {
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    top: 100vh;
+    bottom: -100vh;
+  }
+
   .Menu {
     width: 100vw;
   }
@@ -18,7 +56,23 @@
 
 @media only screen and (min-width: 601px) {
   .Menu {
-    width: 250px;
+    width: 100%;
+  }
+
+  .MobileButton {
+    display: none;
+    visibility: hidden;
+  }
+
+  .Navbar.Active {
+    width: 250px !important;
+    overflow-y: scroll;
+  }
+
+  .Navbar.Disable {
+    width: 0px !important;
+    visibility: hidden;
+    overflow: hidden;
   }
 }
 

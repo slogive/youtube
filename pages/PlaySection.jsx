@@ -95,8 +95,6 @@ function PlaySection(props) {
               </section>
             </div>
 
-            <hr style={{ width: '100%', border: 'solid 1px gray' }}></hr>
-
             <div className={styles.DataGrid}>
               <div className={styles.ProfilePic}>
                 <img
@@ -134,7 +132,6 @@ function PlaySection(props) {
           <VideoRecommendation titleForTest='Video de prueba que se fundamente en funcionar con acortador de caracteres para que ningun nombre sea mas grande de los permitido aunque se cargue una description'></VideoRecommendation>
         </div>
       </div>
-      <section recomendations></section>
     </div>
   );
 }

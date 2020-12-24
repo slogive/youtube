@@ -39,6 +39,7 @@
 .DataGrid {
   display: grid;
   grid-template-columns: min-content auto;
+  padding-top: 10px;
 }
 
 @media only screen and (min-width: 601px) {
@@ -89,6 +90,8 @@
   grid-template-columns: auto repeat(4, min-content);
   gap: var(--PC);
   margin-top: 5px;
+  padding: 5px 0px 10px 0px;
+  border-bottom: var(--grayColor) 1px solid;
 }
 
 .VideoMetaContainer div {
