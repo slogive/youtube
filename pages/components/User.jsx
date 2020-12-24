@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from './styles/User.module.css';
+import { connect } from 'react-redux';
+import { changeNavBarVisibility } from '../../redux/actions/actions';
 
-function User() {
+function User({ changeNavBarVisibility }) {
   return (
-    <section className={styles.User}>
+    <section className={styles.User} onClick={changeNavBarVisibility}>
       <svg
         viewBox='0 0 24 24'
         preserveAspectRatio='xMidYMid meet'
@@ -18,4 +20,8 @@ function User() {
   );
 }
 
-export default User;
+const mapDispatchToProps = {
+  changeNavBarVisibility,
+};
+
+export default connect(null, mapDispatchToProps)(User);

@@ -1,13 +1,22 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from '../styles/Navbar.module.css';
+import { connect } from 'react-redux';
+import { changeNavBarVisibility } from '../redux/actions/actions';
 
 import User from './components/User';
 
-function Navbar() {
+import styles from '../styles/Navbar.module.css';
+
+function Navbar({ navBarVisibility, changeNavBarVisibility }) {
   return (
-    <nav className={styles.Navbar + ' ' + styles.Active}>
-      <div className={styles.MobileButton}>
+    <nav
+      className={
+        navBarVisibility
+          ? styles.Navbar + ' ' + styles.Disable
+          : styles.Navbar + ' ' + styles.Active
+      }
+    >
+      <div className={styles.MobileButton} onClick={changeNavBarVisibility}>
         <span>&#9587;</span>
         <span role='title'>Cuenta</span>
       </div>
@@ -133,4 +142,12 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+  navBarVisibility: state.navBarVisibility,
+});
+
+const mapDispatchToProps = {
+  changeNavBarVisibility,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

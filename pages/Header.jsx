@@ -1,17 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
+import { connect } from 'react-redux';
+import { changeNavBarVisibility } from '../redux/actions/actions';
+
 import styles from '../styles/Header.module.css';
 import User from './components/User';
-import { connect } from 'react-redux';
 
-function Header({ navBar }) {
-  useEffect(() => {
-    console.log(navBar);
-  }, [navBar]);
-  console.log(typeof navBar);
+function Header({ changeNavBarVisibility }) {
   return (
     <header className={styles.Header}>
-      <div className={styles.Button}>
+      <div className={styles.Button} onClick={changeNavBarVisibility}>
         <svg
           viewBox='0 0 24 24'
           preserveAspectRatio='xMidYMid meet'
@@ -181,8 +179,8 @@ function Header({ navBar }) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  navBar: state.navBar,
-});
+const mapDispatchToProps = {
+  changeNavBarVisibility,
+};
 
-export default connect(mapStateToProps, null)(Header);
+export default connect(null, mapDispatchToProps)(Header);
