@@ -4,10 +4,12 @@ import Header from './Header';
 import HomeMain from './HomeMain';
 import Navbar from './Navbar';
 import PlaySection from './PlaySection';
+import Link from 'next/link';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>YouTube Slogive</title>
         <link rel='canonical' href='https://www.youtube.slogive.xyz' />
@@ -60,16 +62,29 @@ export default function Home() {
       </Head>
 
       <Header></Header>
-      {/* <div className={styles.Main}>
-        <Navbar></Navbar>
-        <HomeMain></HomeMain>
-      </div> */}
 
-      <PlaySection></PlaySection>
+      <Link href='/' title='Home'>
+        <h1>Title</h1>
+      </Link>
+      <Link href='/video' title='Video'>
+        <h1>Video</h1>
+      </Link>
 
-      <main className={styles.main}>{/* Apps */}</main>
-
-      <footer className={styles.footer}></footer>
-    </div>
+      <Router>
+        <Switch></Switch>
+      </Router>
+    </>
   );
+}
+
+function NotFound() {
+  return <h1>404</h1>;
+}
+
+function Inicio() {
+  return <h1>We are in Inicio</h1>;
+}
+
+function Video() {
+  return <h1>We are in video</h1>;
 }
