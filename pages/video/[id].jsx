@@ -4,8 +4,9 @@ import Head from 'next/head';
 import React from 'react';
 import Header from '../Header';
 import PlaySection from '../PlaySection';
+import Layout from '../Layout';
 
-function Settings() {
+function Video() {
   const router = useRouter();
   const { id } = router.query; // Destructuring our router object
 
@@ -19,31 +20,34 @@ function Settings() {
       .then((response) => response.json())
       .then((items) => setData(items))
       .then(() => setLoading(true));
-  });
+  }, []);
 
-  const dataitem = loading ? data[id] : '';
+  const dataitem = loading ? data[id - 1] : '';
+
   return (
     <>
       <Head>
         <title>Youtube | Video</title>
       </Head>
-      <Header></Header>
-      {loading ? (
-        <PlaySection
-          hashtag={dataitem.hashtag}
-          title={dataitem.title}
-          views={dataitem.views}
-          date={dataitem.date}
-          owner={dataitem.owner}
-          ownersubs={dataitem.ownersubs}
-          description={dataitem.description}
-          ownerpic={dataitem.ownerpic}
-        ></PlaySection>
-      ) : (
-        ''
-      )}
+      <Layout>
+        {loading ? (
+          <PlaySection
+            id={dataitem.id}
+            hashtag={dataitem.hashtag}
+            title={dataitem.title}
+            views={dataitem.views}
+            date={dataitem.date}
+            owner={dataitem.owner}
+            ownersubs={dataitem.ownersubs}
+            description={dataitem.description}
+            ownerpic={dataitem.ownerpic}
+          ></PlaySection>
+        ) : (
+          ''
+        )}
+      </Layout>
     </>
   );
 }
 
-export default Settings;
+export default Video;

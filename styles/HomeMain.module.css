@@ -1,19 +1,12 @@
-/* .Container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.Container {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  overflow: hidden;
-  height: min-content;
-  padding: 10px;
-} */
-
-.Container {
   display: grid;
   gap: 1rem 1rem;
   justify-content: center;
+  background: rgb(42, 42, 42);
+  min-height: 100%;
 }
 
 .Container:not(:first-child) {

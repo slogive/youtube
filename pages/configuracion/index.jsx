@@ -10,12 +10,21 @@ function Configuracion() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch('https://api.youtube.slogive.xyz/videos', {
-      mode: 'cors',
-    })
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .then(() => setLoading(true));
+    (async () => {
+      try {
+        fetch('https://api.youtube.slogive.xyz/videos', {
+          mode: 'cors',
+        })
+          .then((response) => response.json())
+          .then((data) => setData(data))
+          .then(() => setLoading(true));
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+    return () => {
+      console.log('API Unmounted');
+    };
   }, []);
 
   return (
@@ -38,6 +47,7 @@ function Configuracion() {
                   <th>URL</th>
                   <th>Owner Pic</th>
                   <th>Owner Sub Count</th>
+                  <th>Hashtag</th>
                 </tr>
               </thead>
               <tbody>
@@ -69,6 +79,9 @@ function Configuracion() {
                     </td>
                     <td>
                       <span>{item.ownersubs}</span>
+                    </td>
+                    <td>
+                      <span>{item.hashtag}</span>
                     </td>
                   </tr>
                 ))}

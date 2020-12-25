@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import styles from '../../styles/VideoElement.module.css';
+import moment from 'moment';
+import Link from 'next/link';
 
-function VideoElement(props) {
-  //   const videoTitle = 'Video de prueba que se';
-  //   const videoTitle =
-  //     'Video de prueba que se fundamente en funcionar con acortador de caracteres para que ningun nombre sea mas grande de los permitido aunque se cargue una description';
-  let videoTitleData = props.titleForTest;
-  const viewsCount = '102002';
-  const serverStorage = 'https://youtube.slogive.xyz/src/';
-  const imagePreview = 'preview-image.png';
+function VideoElement({
+  id,
+  title,
+  owner,
+  views,
+  date,
+  url,
+  ownerpic,
+  ownersubs,
+}) {
+  let videoTitleData = title;
+  const serverStorage = 'https://youtube.slogive.xyz/';
+  const imagePreview = 'server/thumbnails/' + id + '.jpg';
 
   if (videoTitleData.length >= 50) {
     videoTitleData = videoTitleData.slice(0, 50) + '...';
@@ -16,34 +23,35 @@ function VideoElement(props) {
     videoTitleData = videoTitleData;
   }
 
-  //  console.log(typeof videoTitle);
-  //   console.log(videoTitle.length);
-
   return (
-    <div className={styles.Container}>
-      <img
-        className={styles.Image}
-        src={`${serverStorage}${imagePreview}`}
-        alt='Preview'
-      />
-      <div className={styles.Data}>
+    <Link href={`video/${id}`} passHref>
+      <div className={styles.Container}>
         <img
-          className={styles.ProfileImage}
-          src={`${serverStorage}channel-profile.jpg`}
-          alt=''
+          className={styles.Image}
+          src={`${serverStorage}${imagePreview}`}
+          alt={`Thumbnail ${owner}`}
           draggable='false'
         />
-        <div className={styles.DataGrid}>
-          <span className={styles.Title}>{videoTitleData}</span>
-          <span className={styles.Owner}>Slogive</span>
-          <div>
-            <span className={styles.Views}>{`${viewsCount} vistas`}</span>
-            &nbsp; &bull; &nbsp;
-            <span className={styles.Date}>11/11/11</span>
+        <div className={styles.Data}>
+          <img
+            className={styles.ProfileImage}
+            src={`${serverStorage}src/${ownerpic}`}
+            alt=''
+            draggable='false'
+          />
+          <div className={styles.DataGrid}>
+            <span className={styles.Title}>{videoTitleData}</span>
+            <span className={styles.Owner}>{owner}</span>
+            <div>
+              <span className={styles.Views}>
+                {views.toLocaleString()} vistas &nbsp; &bull; &nbsp;{' '}
+                {moment(date).format('D MMM[.] YYYY')}
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

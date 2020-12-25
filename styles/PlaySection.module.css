@@ -9,7 +9,6 @@
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  background-color: var(--blackColor);
 }
 
 @media only screen and (min-width: 1000px) {
@@ -38,12 +37,19 @@
 
 .DataGrid {
   display: grid;
-  grid-template-columns: min-content auto;
+
   padding-top: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .DataGrid {
+    margin-bottom: 10px;
+  }
 }
 
 @media only screen and (min-width: 601px) {
   .DataGrid {
+    grid-template-columns: min-content auto;
     gap: var(--PCS);
   }
 }
@@ -59,8 +65,16 @@
 
 .Container {
   display: grid;
-  grid-template-columns: auto 20%;
   color: white;
+}
+
+@media only screen and (max-width: 600px) {
+}
+
+@media only screen and (min-width: 601px) {
+  .Container {
+    grid-template-columns: auto 20%;
+  }
 }
 
 .VideoInfo {
@@ -79,19 +93,56 @@
   color: var(--blueColor) !important;
 }
 
+@media only screen and (max-width: 600px) {
+  .Hashtags {
+    margin: 0px 5px;
+  }
+}
+
 .VideoTitle {
   font-weight: 500;
   font-size: 1.25rem;
 }
 
+@media only screen and (max-width: 600px) {
+  .VideoTitle {
+    margin: 0px 10px;
+  }
+}
+
 /* Vidoe MetaData */
 .VideoMetaContainer {
   display: grid;
-  grid-template-columns: auto repeat(4, min-content);
   gap: var(--PC);
   margin-top: 5px;
-  padding: 5px 0px 10px 0px;
   border-bottom: var(--grayColor) 1px solid;
+}
+
+@media only screen and (max-width: 600px) {
+  .VideoMetaContainer {
+    grid-template-columns: repeat(4, auto);
+    padding: 10px;
+    justify-content: space-around;
+  }
+
+  .VideoMeta {
+    grid-row: 1;
+    grid-column: 1 / span 4;
+  }
+
+  .VideoPops,
+  .VideoShare,
+  .VideoSave,
+  .VideoOptions {
+    grid-row: 2;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .VideoMetaContainer {
+    grid-template-columns: auto repeat(4, min-content);
+    padding: 5px 0px 10px 0px;
+  }
 }
 
 .VideoMetaContainer div {
@@ -106,18 +157,38 @@
 .VideoPops {
   display: grid;
   grid-template-columns: repeat(2, min-content);
-  gap: calc(var(--PC) * 1.25);
 }
 
-.VideoPops div {
-  grid-template-columns: repeat(2, min-content);
-  gap: var(--MB);
+@media only screen and (max-width: 600px) {
+  .VideoPops {
+    gap: var(--PC);
+  }
+
+  .VideoPops div,
+  .VideoShare,
+  .VideoSave {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    gap: var(--MB);
+  }
 }
 
-.VideoShare,
-.VideoSave {
-  grid-template-columns: repeat(2, min-content);
-  gap: var(--MB);
+@media only screen and (min-width: 601px) {
+  .VideoPops {
+    gap: calc(var(--PC) * 1.25);
+  }
+
+  .VideoPops div {
+    grid-template-columns: repeat(2, min-content);
+    gap: var(--MB);
+  }
+
+  .VideoShare,
+  .VideoSave {
+    grid-template-columns: repeat(2, min-content);
+    gap: var(--MB);
+  }
 }
 
 .VideoPops,
@@ -128,21 +199,54 @@
 }
 
 /* User */
-.ProfilePic {
-  display: grid;
+.ProfilePic,
+.ProfilePicMB {
   width: 55px;
+  height: auto;
   border-radius: 100%;
 }
 
-.ProfilePic img {
+.ProfilePic img,
+.ProfilePicMB img {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 100%;
 }
 
+@media only screen and (max-width: 600px) {
+  .ProfilePic {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .ProfilePic {
+    display: grid;
+  }
+
+  .ProfilePicMB {
+    display: none;
+    visibility: hidden;
+  }
+}
+
 .showData /* Controla el tamaño de la data cargada, title, desc */ {
   overflow: hidden;
+  display: grid;
+}
+
+@media only screen and (max-width: 600px) {
+  .showData {
+    grid-template-columns: min-content auto;
+    gap: 5px;
+    padding: 10px;
+  }
+
+  .videoDesc {
+    grid-column: 1 / span 2;
+  }
 }
 
 .ProfileTitle {
@@ -154,13 +258,26 @@
 }
 
 .ProfileSub {
-  background: #c00;
   border-radius: 5px;
   padding: 10px 20px;
   text-transform: uppercase;
-  font-weight: bold;
+
   width: min-content;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .ProfileSub {
+    color: #c00;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .ProfileSub {
+    font-weight: bold;
+    background: #c00;
+    color: white !important;
+  }
 }
 
 /**/
@@ -174,6 +291,12 @@
 .ShowMore {
   background: transparent;
   margin-top: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .ShowMore {
+    margin-left: 10px;
+  }
 }
 
 .ShowMore button {

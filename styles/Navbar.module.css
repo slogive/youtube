@@ -33,7 +33,7 @@
   }
 
   .Navbar.Active {
-    position: absolute;
+    position: fixed;
     right: 0px;
     left: 0px;
     top: 49px;
@@ -47,6 +47,7 @@
     left: 0px;
     top: 100vh;
     bottom: -100vh;
+    visibility: hidden;
   }
 
   .Menu {
@@ -55,6 +56,10 @@
 }
 
 @media only screen and (min-width: 601px) {
+  .Navbar {
+    margin-top: 50px;
+  }
+
   .Menu {
     width: 100%;
   }

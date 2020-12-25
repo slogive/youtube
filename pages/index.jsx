@@ -5,24 +5,29 @@ import Header from './Header';
 import Navbar from './Navbar';
 import Link from 'next/link';
 import Layout from './Layout';
+import HomeMain from './HomeMain';
 
 function Home() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    let isMounted = true;
-    fetch('https://api.youtube.slogive.xyz/videos', {
-      mode: 'cors',
-    })
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .then(() => setLoading(true));
-
+    (async () => {
+      try {
+        fetch('https://api.youtube.slogive.xyz/videos', {
+          mode: 'cors',
+        })
+          .then((response) => response.json())
+          .then((data) => setData(data))
+          .then(() => setLoading(true));
+      } catch (error) {
+        console.log(error);
+      }
+    })();
     return () => {
-      isMounted = false;
+      console.log('API Unmounted');
     };
-  });
+  }, []);
 
   return (
     <>
@@ -30,7 +35,13 @@ function Home() {
         <title>YouTube | Inicio</title>
       </Head>
 
-      <Layout></Layout>
+      {loading ? (
+        <Layout>
+          <HomeMain></HomeMain>
+        </Layout>
+      ) : (
+        'Loading data from API'
+      )}
     </>
   );
 }

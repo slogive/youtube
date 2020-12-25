@@ -3,6 +3,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
+  --blackColor: #181818;
+  background-color: var(--blackColor);
 }
 
 a {
