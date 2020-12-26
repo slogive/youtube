@@ -66,10 +66,12 @@ function PlaySection(props) {
                   </div>
                   <section className={styles.VideoMetaContainer}>
                     <div className={styles.VideoMeta}>
-                      <span>
-                        {views.toLocaleString()} vistas &nbsp; &bull; &nbsp;{' '}
-                        {moment(date).format('D MMM[.] YYYY')}
-                      </span>
+                      {loading ? (
+                        <span>
+                          {views.toLocaleString()} vistas &nbsp; &bull; &nbsp;{' '}
+                          {moment(date).format('D MMM[.] YYYY')}
+                        </span>
+                      ) : null}
                     </div>
                     <div className={styles.VideoPops}>
                       <div>

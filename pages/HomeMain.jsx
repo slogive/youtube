@@ -18,8 +18,13 @@ function HomeMain() {
 
   return (
     <main className={styles.Container}>
-      {data?.map((item) => (
-        <VideoElement key={item.id} {...item}></VideoElement>
+      {data?.map((item, i) => (
+        <VideoElement
+          key={i}
+          titleEdited={item.title.slice(0, 50) + '...'}
+          viewsEdited={views.toLocaleString()}
+          {...item}
+        ></VideoElement>
       ))}
     </main>
   );
