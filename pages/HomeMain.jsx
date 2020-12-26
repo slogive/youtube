@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import VideoElement from './components/VideoElement';
 import styles from '../styles/HomeMain.module.css';
+import Loading from './components/Loading';
 
 function HomeMain() {
   const [data, setData] = useState(null);
@@ -18,14 +19,18 @@ function HomeMain() {
 
   return (
     <main className={styles.Container}>
-      {data?.map((item, i) => (
-        <VideoElement
-          key={i}
-          titleEdited={item.title.slice(0, 50) + '...'}
-          viewsEdited={views.toLocaleString()}
-          {...item}
-        ></VideoElement>
-      ))}
+      {loading ? (
+        data?.map((item, i) => (
+          <VideoElement
+            key={i}
+            titleEdited={item.title.slice(0, 50) + '...'}
+            viewsEdited={item.views.toLocaleString()}
+            {...item}
+          ></VideoElement>
+        ))
+      ) : (
+        <Loading></Loading>
+      )}
     </main>
   );
 }
