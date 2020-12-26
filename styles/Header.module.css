@@ -11,7 +11,6 @@
 .Header {
   display: grid;
   align-items: center;
-  justify-items: center;
   height: 50px;
   position: fixed;
   top: 0px;
@@ -20,16 +19,41 @@
   z-index: 99999;
 }
 
+.SearchContainer {
+}
+
 @media only screen and (max-width: 600px) {
   .Header {
     padding: 5px;
     gap: 10px !important;
-    grid-template-columns: auto min-content min-content;
-    grid-template-areas: 'Title SearchSimple User';
   }
 
   .Title {
     justify-self: left;
+    width: min-content;
+  }
+
+  .SearchContainer {
+    display: grid;
+    grid-template-columns: min-content min-content;
+  }
+
+  .Search.Active {
+    display: grid;
+  }
+
+  .Search.Disable {
+    display: none !important;
+    visibility: none !important;
+  }
+
+  .SearchTrigger {
+    text-align: center;
+    align-self: center;
+    width: 27px;
+    height: auto;
+    height: auto;
+    fill: white;
   }
 
   .SearchSimple {
@@ -39,8 +63,7 @@
   .Button,
   .Create,
   .Apps,
-  .Notifications,
-  .Search {
+  .Notifications {
     display: none !important;
     visibility: hidden !important;
   }
@@ -50,9 +73,13 @@
   .Header {
     --paddingLR: 10px;
     --paddingUD: 5px;
-    grid-template-columns: repeat(2, min-content) auto repeat(4, min-content);
-    grid-template-areas: 'Button Title Search Create Apps Notifications User';
+    grid-template-columns: repeat(2, min-content) auto repeat(4, min-content) !important;
     padding: var(--paddingUD) var(--paddingLR) var(--paddingUD) var(--paddingLR);
+  }
+
+  .SearchTrigger {
+    display: none;
+    visibility: hidden;
   }
 
   .SearchSimple {
@@ -63,7 +90,6 @@
 
 .Button {
   height: var(--size);
-  grid-area: Button;
   color: inherit;
   display: grid;
   align-items: center;
@@ -73,32 +99,21 @@
 .Title {
   width: var(--titleSize);
   height: 100%;
-  grid-area: Title;
 }
 
 .Search {
   align-items: center;
-  display: grid;
   grid-template-columns: auto min-content;
-  grid-area: Search;
-  max-width: 525px;
   width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.SearchSimple {
-  grid-area: SearchSimple;
-}
-
-.Create {
-  grid-area: Create;
-}
-
-.Apps {
-  grid-area: Apps;
-}
-
-.Notifications {
-  grid-area: Notifications;
+@media only screen and (min-width: 601px) {
+  .Search {
+    display: grid;
+    max-width: 525px;
+  }
 }
 
 /* Sizes */
@@ -129,7 +144,7 @@
 }
 
 /* Nested */
-.Search input {
+.SearchInput {
   padding: 5px 10px;
   border: solid 1px transparent;
   outline: none;
@@ -143,7 +158,7 @@
   color: inherit;
 }
 
-.Search input:focus {
+.SearchInput input:focus {
   border: solid 1px var(--blueColor);
   -webkit-box-shadow: 0px 0px 2px 0px rgba(62, 166, 255, 1);
   -moz-box-shadow: 0px 0px 2px 0px rgba(62, 166, 255, 1);

@@ -297,10 +297,11 @@
 }
 
 /**/
-.videoDesc {
-  line-height: 25px;
-  padding: 0px;
-  margin: 10px 0px 0px 0px !important;
+.videoDesc.Active {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 /**/

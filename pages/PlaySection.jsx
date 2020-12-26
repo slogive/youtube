@@ -27,22 +27,16 @@ function PlaySection(props) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    (async () => {
-      try {
-        fetch('https://api.youtube.slogive.xyz/videos', {
-          mode: 'cors',
-        })
-          .then((response) => response.json())
-          .then((data) => setData(data))
-          .then(() => setLoading(true));
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-    return () => {
-      console.log('API Unmounted');
-    };
+    fetch('https://api.youtube.slogive.xyz/videos', {
+      mode: 'cors',
+    })
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .then(() => setLoading(true))
+      .catch((error) => console.log(error));
   }, []);
+
+  const files = loading ? data.filter((item) => item.id !== id) : null;
 
   return (
     <>
@@ -152,10 +146,7 @@ function PlaySection(props) {
                   />
                 </div>
                 <div>
-                  <div
-                    className={styles.showData}
-                    style={showMore ? {} : { maxHeight: '150px' }}
-                  >
+                  <div className={styles.showData}>
                     <div className={styles.ProfilePicMB}>
                       <img
                         src={`${serverStorage}src/${ownerpic}`}
@@ -171,7 +162,15 @@ function PlaySection(props) {
                       </div>
                       <span className={styles.ProfileSub}>Suscribirse</span>
                     </div>
-                    <p className={styles.videoDesc}>{description}</p>
+                    <p
+                      className={
+                        showMore
+                          ? styles.videoDesc
+                          : styles.videoDesc + ' ' + styles.Active
+                      }
+                    >
+                      {description}
+                    </p>
                   </div>
                   <div className={styles.ShowMore}>
                     <button onClick={setShowMore}>
@@ -184,9 +183,11 @@ function PlaySection(props) {
           </section>
 
           <div className={styles.Recomendations}>
-            {data?.reverse().map((item) => (
-              <VideoElement key={item.id} {...item}></VideoElement>
-            ))}
+            {loading
+              ? files?.map((item) => (
+                  <VideoElement key={item.id} {...item}></VideoElement>
+                ))
+              : null}
           </div>
         </div>
       </div>

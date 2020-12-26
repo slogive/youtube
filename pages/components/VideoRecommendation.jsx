@@ -1,11 +1,7 @@
 import React from 'react';
 import styles from './styles/VideoRecommendations.module.css';
 
-function VideoRecommendation(props) {
-  let videoTitleData = props.titleForTest;
-
-  let viewsCount = 102002;
-
+function VideoRecommendation() {
   if (viewsCount >= 1000 || viewsCount < 1000000) {
     viewsCount =
       Math.sign(viewsCount) * (Math.abs(viewsCount) / 1000).toFixed(1) + 'k';
