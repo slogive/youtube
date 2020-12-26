@@ -2,11 +2,12 @@ import React from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import { changeNavBarVisibility } from '../redux/actions/actions';
+import { changeSearch } from '../redux/actions/actions';
 
 import styles from '../styles/Header.module.css';
 import User from './components/User';
 
-function Header({ changeNavBarVisibility }) {
+function Header({ changeNavBarVisibility, changeSearch }) {
   return (
     <header className={styles.Header}>
       <div className={styles.Button} onClick={changeNavBarVisibility}>
@@ -87,7 +88,11 @@ function Header({ changeNavBarVisibility }) {
         </div>
       </Link>
       <div className={styles.Search}>
-        <input placeholder='Buscar'></input>
+        <input
+          placeholder='Buscar'
+          onKeyDown={(event) => changeSearch(event.target.value)}
+          onKeyUp={(event) => changeSearch(event.target.value)}
+        ></input>
         <button>
           <svg
             viewBox='0 0 24 24'
@@ -181,6 +186,7 @@ function Header({ changeNavBarVisibility }) {
 
 const mapDispatchToProps = {
   changeNavBarVisibility,
+  changeSearch,
 };
 
 export default connect(null, mapDispatchToProps)(Header);

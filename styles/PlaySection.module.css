@@ -54,11 +54,26 @@
   }
 }
 
-/* Provisional */
-.Player img {
+/**/
+.Player {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.VideoPlayer {
+  position: relative;
+  padding-bottom: 56.25%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.VideoPlayer video {
+  position: absolute;
   width: 100%;
   height: auto;
-  display: block;
+  outline: none;
 }
 
 /**/
@@ -123,6 +138,7 @@
     grid-template-columns: repeat(4, auto);
     padding: 10px;
     justify-content: space-around;
+    font-size: 0.75rem !important;
   }
 
   .VideoMeta {

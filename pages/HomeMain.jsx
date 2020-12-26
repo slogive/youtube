@@ -7,21 +7,13 @@ function HomeMain() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    (async () => {
-      try {
-        fetch('https://api.youtube.slogive.xyz/videos', {
-          mode: 'cors',
-        })
-          .then((response) => response.json())
-          .then((data) => setData(data))
-          .then(() => setLoading(true));
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-    return () => {
-      console.log('API Unmounted');
-    };
+    fetch('https://api.youtube.slogive.xyz/videos', {
+      mode: 'cors',
+    })
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .then(() => setLoading(true))
+      .catch((error) => console.log(error));
   }, []);
 
   return (

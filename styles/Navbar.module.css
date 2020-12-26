@@ -9,6 +9,7 @@
   min-height: calc(100vh - 50px);
   background-color: #202020;
   transition: all ease-in-out 0.5s;
+  z-index: 2;
 }
 
 @media only screen and (max-width: 600px) {
@@ -69,15 +70,27 @@
     visibility: hidden;
   }
 
+  .Navbar {
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+  }
+
   .Navbar.Active {
+    position: fixed;
+    overflow: auto;
     width: 250px !important;
-    overflow-y: scroll;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   }
 
   .Navbar.Disable {
-    width: 0px !important;
+    position: absolute;
     visibility: hidden;
     overflow: hidden;
+    width: 0px !important;
   }
 }
 

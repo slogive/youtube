@@ -51,10 +51,14 @@ function PlaySection(props) {
       <div className={styles.Main}>
         <div className={styles.Container}>
           <section className={styles.Player}>
-            <img
-              src={`${serverStorage}server/thumbnails/${id}.jpg`}
-              alt={`Thumbnail ${owner}`}
-            />
+            <div className={styles.VideoPlayer}>
+              <video
+                type='video/mp4'
+                autoPlay={true}
+                src={`${serverStorage}server/videos/encoded/${id}.mp4`}
+                controls
+              />
+            </div>
             <section style={{ display: 'grid' }}>
               <div className={styles.VideoInfo}>
                 {hashtag ? (

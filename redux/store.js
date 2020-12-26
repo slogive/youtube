@@ -3,6 +3,7 @@ import { devToolsEnhancer } from 'redux-devtools-extension';
 
 const initialState = {
   navBarVisibility: true,
+  searchStatus: '',
 };
 
 function reducer(state = initialState, action) {
@@ -11,6 +12,11 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         navBarVisibility: !state.navBarVisibility,
+      };
+    case 'SEARCH':
+      return {
+        ...state,
+        searchStatus: action.payload,
       };
     default:
       return state;

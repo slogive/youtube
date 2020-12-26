@@ -8,7 +8,7 @@ import Layout from '../Layout';
 
 function Video() {
   const router = useRouter();
-  const { id } = router.query; // Destructuring our router object
+  const { id } = router.query;
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -18,8 +18,9 @@ function Video() {
       mode: 'cors',
     })
       .then((response) => response.json())
-      .then((items) => setData(items))
-      .then(() => setLoading(true));
+      .then((data) => setData(data))
+      .then(() => setLoading(true))
+      .catch((error) => console.log(error));
   }, []);
 
   const dataitem = loading ? data[id - 1] : '';
@@ -27,7 +28,7 @@ function Video() {
   return (
     <>
       <Head>
-        <title>Youtube | Video</title>
+        <title>{dataitem.title} | Youtube</title>
       </Head>
       <Layout>
         {loading ? (

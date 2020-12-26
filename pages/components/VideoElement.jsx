@@ -24,7 +24,7 @@ function VideoElement({
   }
 
   return (
-    <Link href={`video/${id}`} passHref>
+    <Link href={`/video/${id}`} passHref>
       <div className={styles.Container}>
         <img
           className={styles.Image}
