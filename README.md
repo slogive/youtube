@@ -1,18 +1,50 @@
 # Youtube
 
-## Getting Started
+One page Youtube APP
 
-First, run the development server:
+## Next.js
+
+```bash
+npm i
+```
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[http://localhost:3000](http://localhost:3000)
 
-## Used in the project
+Servidor de desarollo Next.js
+
+### Local
+
+[http://localhost:3001](http://localhost:3000)
+
+## API
+
+Para iniciar
+
+```bash
+npm i
+```
+
+```bash
+node server.js
+```
+
+### Local
+
+[http://localhost:3001](http://localhost:3000)
+
+### Online
+
+| Ruta                                                      | Datos      |
+| --------------------------------------------------------- | ---------- |
+| [Home](https://api.youtube.slogive.xyz/)                  | Status     |
+| [Videos Meta](https://api.youtube.slogive.xyz/videos)     | Data       |
+| [Video by id](https://api.youtube.slogive.xyz/videos/:id) | Data by id |
+
+## Tecnologias utilizadas en el proyecto
 
 | Technology | Description                 |
 | ---------- | --------------------------- |
@@ -21,30 +53,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 | Next.js    | To use SSR and optimize SEO |
 | MySQL      |                             |
 | Node.js    | To create the API           |
-
-.Button
-.Title
-.Search
-.Create
-.Apps
-.Notifications
-.Sessions
-
-.Button,
-.Title,
-.Search,
-.Create,
-.Apps,
-.Notifications,
-.Sessions
-
-Mobile Header
-
-.Title,
-.Search,
-.Sessions
-
-.Button,
-.Create,
-.Apps,
-.Notifications,
+| Express    |                             |
+| Cors       |                             |
