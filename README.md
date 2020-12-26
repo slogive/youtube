@@ -20,6 +20,15 @@ Servidor de desarollo Next.js
 
 [http://localhost:3001](http://localhost:3000)
 
+### Online
+
+| Ruta                                                           | Datos      |
+| -------------------------------------------------------------- | ---------- |
+| [Inicio](https://youtube.slogive.xyz/)                         | Inicio     |
+| [Busqueda](https://youtube.slogive.xyz/buscar)                 | Data       |
+| [Video por id](https://api.youtube.slogive.xyz/videos/:id)     | Data by id |
+| [Configuracion](https://api.youtube.slogive.xyz/configuracion) | Data by id |
+
 ## API
 
 Para iniciar
