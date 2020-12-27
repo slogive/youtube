@@ -187,7 +187,12 @@ function PlaySection(props) {
           <div className={styles.Recomendations}>
             {loading
               ? files?.map((item) => (
-                  <VideoElement key={item.id} {...item}></VideoElement>
+                  <VideoElement
+                    key={item.id}
+                    titleEdited={item.title.slice(0, 50) + '...'}
+                    viewsEdited={item.views.toLocaleString()}
+                    {...item}
+                  ></VideoElement>
                 ))
               : null}
           </div>
