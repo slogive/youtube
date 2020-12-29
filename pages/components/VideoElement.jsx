@@ -1,17 +1,31 @@
-import React from 'react';
-import styles from '../../styles/VideoElement.module.css';
+import { connect } from 'react-redux';
 import moment from 'moment';
 import Link from 'next/link';
-import Loading from './Loading';
+import { changeSearchStatus } from '../../redux/actions/actions';
+
+import styles from '../../styles/VideoElement.module.css';
 
 function VideoElement(props) {
-  const { id, titleEdited, owner, viewsEdited, date, ownerpic } = props;
+  const {
+    id,
+    titleEdited,
+    owner,
+    viewsEdited,
+    date,
+    ownerpic,
+    changeSearchStatus,
+  } = props;
   const serverStorage = 'https://youtube.slogive.xyz/';
   const imagePreview = 'server/thumbnails/' + id + '.jpg';
 
+  function changeSearchFunc() {}
+
   return (
     <Link href={`/video/${id}`} passHref>
-      <div className={styles.Container}>
+      <div
+        className={styles.Container}
+        onClick={() => changeSearchStatus(false)}
+      >
         <img
           className={styles.Image}
           src={`${serverStorage}${imagePreview}`}
@@ -41,4 +55,12 @@ function VideoElement(props) {
   );
 }
 
-export default VideoElement;
+const mapStateToProps = (state) => ({
+  searchStatus: state.searchStatus,
+});
+
+const mapDispatchToProps = {
+  changeSearchStatus,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(VideoElement);

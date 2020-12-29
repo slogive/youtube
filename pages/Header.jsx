@@ -2,17 +2,23 @@ import React, { useReducer, useEffect } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import { changeNavBarVisibility } from '../redux/actions/actions';
-import { changeSearch } from '../redux/actions/actions';
+import { changeSearch, changeSearchStatus } from '../redux/actions/actions';
 
 import styles from '../styles/Header.module.css';
 import User from './components/User';
 
-function Header({ changeNavBarVisibility, changeSearch, searchStatus }) {
+function Header({
+  changeNavBarVisibility,
+  changeSearch,
+  changeSearchStatus,
+  searchValue,
+}) {
   const [search, setSearch] = useReducer((useReducer) => !useReducer, false);
 
-  useEffect(() => {
-    console.log(searchStatus);
-  }, [searchStatus]);
+  function removeSearch() {
+    changeSearchStatus(false);
+    changeSearch('');
+  }
 
   return (
     <header
@@ -44,8 +50,8 @@ function Header({ changeNavBarVisibility, changeSearch, searchStatus }) {
       )}
 
       {search ? null : (
-        <Link href='/' passHref>
-          <div className={styles.Title}>
+        <Link href='/'>
+          <div className={styles.Title} onClick={() => removeSearch()}>
             <svg
               viewBox='0 0 200 60'
               preserveAspectRatio='xMidYMid meet'
@@ -130,23 +136,27 @@ function Header({ changeNavBarVisibility, changeSearch, searchStatus }) {
           }
           onSubmit={(e) => {
             e.preventDefault();
-            window.location.href = '/buscar';
+
+            function submitSearch() {
+              changeSearch(e.target.search.value);
+              changeSearchStatus(true);
+              window.history.pushState(
+                'object or string',
+                'Title',
+                `/search?${e.target.search.value}`
+              );
+            }
+
+            e.target.search.value ? submitSearch() : null;
           }}
         >
           <input
             className={styles.SearchInput}
             placeholder='Buscar'
-            onKeyDown={(event) => changeSearch(event.target.value)}
-            onKeyUp={(event) => changeSearch(event.target.value)}
-            onKeyPressCapture={(event) => changeSearch(event.target.value)}
+            name='search'
+            value={searchValue}
           />
-          <button
-            type='button'
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href = '/buscar';
-            }}
-          >
+          <button type='submit'>
             <svg
               viewBox='0 0 24 24'
               preserveAspectRatio='xMidYMid meet'
@@ -247,12 +257,13 @@ function Header({ changeNavBarVisibility, changeSearch, searchStatus }) {
 }
 
 const mapStateToProps = (state) => ({
-  searchStatus: state.searchStatus,
+  searchValue: state.searchValue,
 });
 
 const mapDispatchToProps = {
   changeNavBarVisibility,
   changeSearch,
+  changeSearchStatus,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(Header);
