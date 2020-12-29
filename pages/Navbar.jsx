@@ -1,13 +1,26 @@
-import React from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
-import { changeNavBarVisibility } from '../redux/actions/actions';
+import {
+  changeNavBarVisibility,
+  changeSearch,
+  changeSearchStatus,
+} from '../redux/actions/actions';
 
 import User from './components/User';
 
 import styles from '../styles/Navbar.module.css';
 
-function Navbar({ navBarVisibility, changeNavBarVisibility }) {
+function Navbar({
+  navBarVisibility,
+  changeNavBarVisibility,
+  changeSearchStatus,
+  changeSearch,
+}) {
+  function removeSearch() {
+    changeSearchStatus(false);
+    changeSearch('');
+  }
+
   return (
     <nav
       className={
@@ -24,7 +37,7 @@ function Navbar({ navBarVisibility, changeNavBarVisibility }) {
         <section className={styles.Container}>
           <div className={styles.ClassMain}>
             <Link href='/' passHref>
-              <div>
+              <div onClick={() => removeSearch()}>
                 <svg
                   viewBox='0 0 24 24'
                   preserveAspectRatio='xMidYMid meet'
@@ -148,6 +161,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   changeNavBarVisibility,
+  changeSearch,
+  changeSearchStatus,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

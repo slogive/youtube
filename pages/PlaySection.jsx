@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import { useState, useReducer, useEffect } from 'react';
 import Head from 'next/head';
 import moment from 'moment';
 

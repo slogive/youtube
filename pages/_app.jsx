@@ -57,7 +57,6 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Provider store={store}>
         <Component {...pageProps} />
-        {/* {console.log(store)} */}
       </Provider>
     </>
   );

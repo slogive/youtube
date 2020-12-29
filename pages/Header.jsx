@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import { changeNavBarVisibility } from '../redux/actions/actions';
